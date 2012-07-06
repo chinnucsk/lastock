@@ -2,8 +2,14 @@ REBAR=./rebar
 CODE_DIR=apps/lastock
 CT_LOG_DIR=apps/lastock/ctest/*/logs
 
-all:
+quick:
 	${REBAR} compile
+
+all: deps
+	${REBAR} compile
+
+deps:
+	${REBAR} get-deps
 
 gc:
 	@echo 'Removing all emacs backup files'
@@ -22,3 +28,9 @@ test: all
 
 dialzye: all
 	@cd apps/lastock; dialzyer -Wrace_conditions ebin/*.beam
+
+clean: gc
+	${REBAR} clean
+
+realclean: clean
+	rm -rf deps
