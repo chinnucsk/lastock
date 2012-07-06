@@ -4,3 +4,10 @@ priv
 *.o
 *.beam
 *.plt
+*.DS_Store
+*~
+*.P
+deps
+.eunit
+ctest/*/logs/*
+
